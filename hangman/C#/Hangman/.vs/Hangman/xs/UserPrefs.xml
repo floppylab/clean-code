@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{1769ED1B-D62A-45A7-AB21-3CBB2DDE2180}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Helpers/Reader.cs">
     <Files>
-      <File FileName="Program.cs" Line="12" Column="43" />
-      <File FileName="Helpers/SortFunctions.cs" Line="10" Column="16" />
+      <File FileName="Program.cs" Line="21" Column="13" />
+      <File FileName="Helpers/Reader.cs" Line="22" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

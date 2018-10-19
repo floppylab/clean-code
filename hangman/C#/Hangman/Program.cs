@@ -11,20 +11,12 @@ namespace Hangman
         static void Main(string[] args)
         {
             SortFunctions sF = new SortFunctions();
-
-            List<string> w = new List<string>();
+            Reader reader = new Reader();
 
             var wordsPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName + @"\resources\words.in";
-            string line;
 
             // reading text file line by line
-            using (StreamReader reader = new StreamReader(wordsPath))
-            {
-                while ((line = reader.ReadLine()) != null)
-                {
-                    w.Add(line);
-                }
-            }
+            List<string> w = reader.ReadText(wordsPath);
 
             // sorting words by length
             Dictionary<int, List<string>> d = sF.SortWordsByLength(w);
