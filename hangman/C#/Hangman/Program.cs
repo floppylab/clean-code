@@ -13,159 +13,169 @@ namespace Hangman
             SortFunctions sF = new SortFunctions();
             Reader reader = new Reader();
 
-            var wordsPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName + @"\resources\words.in";
-
             // reading text file line by line
-            List<string> w = reader.ReadText(wordsPath);
+            List<string> w = reader.ReadText(
+                Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName + @"\resources\words.in");
 
             // sorting words by length
             Dictionary<int, List<string>> d = sF.SortWordsByLength(w);
 
 
             Console.WriteLine("Number of letters in the word? ");
-            int l = Convert.ToInt32(Console.ReadLine());
-            
-            if (d.ContainsKey(l))
+
+            try
             {
-                // choose a random word with the given length
-                string word = d[l][new Random().Next(d[l].Count)];
-                bool[] v = new bool[word.Length];
-                int e = 0;
-                bool done = true;
+                int l = Convert.ToInt32(Console.ReadLine());
 
-                while (e < 10)
+                if (d.ContainsKey(l))
                 {
+                    // choose a random word with the given length
+                    string word = d[l][new Random().Next(d[l].Count)];
+                    bool[] v = new bool[word.Length];
+                    int e = 0;
+                    bool done = true;
 
-                    done = true;
-                    for (int i = 0; i < word.Length; ++i)
+                    while (e < 10)
                     {
-                        if (!v[i])
+
+                        done = true;
+                        for (int i = 0; i < word.Length; ++i)
                         {
-                            done = false;
+                            if (!v[i])
+                            {
+                                done = false;
+                            }
                         }
+                        if (done)
+                        {
+                            break;
+                        }
+
+                        Console.WriteLine("Guess a letter: ");
+                        char chr = Convert.ToChar(Console.ReadLine()[0]);
+
+                        // TODO check if previously entered
+                        bool hit = false;
+                        for (int i = 0; i < word.Length; ++i)
+                        {
+                            if (word[i] == chr && !v[i])
+                            {
+                                v[i] = true;
+                                hit = true;
+                            }
+                        }
+                        if (hit)
+                        {
+                            Console.WriteLine("Hit!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Missed, mistake {0} out of {1}", e + 1, 10);
+                            ++e;
+
+                            // drawing hangman
+                            Console.WriteLine();
+                            if (e > 2) Console.WriteLine("    xxxxxxxxxxxxx");
+                            else Console.WriteLine();
+
+                            if (e > 3) Console.WriteLine("    x           x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 3) Console.WriteLine("    x           x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 4) Console.WriteLine("   xxx          x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 4) Console.WriteLine("  xxxxx         x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 4) Console.WriteLine("   xxx          x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 5) Console.WriteLine("    x           x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 7) Console.WriteLine("  x x x         x");
+                            else if (e > 6) Console.WriteLine("  x x           x");
+                            else if (e > 5) Console.WriteLine("    x           x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 7) Console.WriteLine(" x  x  x        x");
+                            else if (e > 6) Console.WriteLine(" x  x           x");
+                            else if (e > 5) Console.WriteLine("    x           x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 5) Console.WriteLine("    x           x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 9) Console.WriteLine("   x x          x");
+                            else if (e > 8) Console.WriteLine("   x            x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 9) Console.WriteLine(" x     x        x");
+                            else if (e > 8) Console.WriteLine(" x              x");
+                            else if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 1) Console.WriteLine("                x");
+                            else Console.WriteLine();
+
+                            if (e > 0) Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                            else Console.WriteLine();
+                            Console.WriteLine();
+
+                        }
+                        Console.Write("The word: ");
+
+                        for (int i = 0; i < word.Length; ++i)
+                        {
+                            if (v[i])
+                            {
+                                Console.Write(" " + word[i] + " ");
+                            }
+                            else
+                            {
+                                Console.Write(" _ ");
+                            }
+                        }
+                        Console.WriteLine();
                     }
+
+                    // printing final result
                     if (done)
                     {
-                        break;
+                        Console.WriteLine("You won!");
                     }
-
-                    Console.WriteLine("Guess a letter: ");
-                    char chr = Convert.ToChar(Console.ReadLine()[0]);
-
-                    // TODO check if previously entered
-                    bool hit = false;
-                    for (int i = 0; i < word.Length; ++i)
+                    else
                     {
-                        if (word[i] == chr && !v[i])
-                        {
-                            v[i] = true;
-                            hit = true;
-                        }
+                        Console.WriteLine("You lost.");
+                        Console.WriteLine("The word was: " + word);
                     }
-                    if (hit)
-                    {
-                        Console.WriteLine("Hit!");
-                    }
-                    else {
-                        Console.WriteLine("Missed, mistake {0} out of {1}", e+1, 10);
-                        ++e;
-
-                        // drawing hangman
-                        Console.WriteLine();
-                        if (e > 2) Console.WriteLine("    xxxxxxxxxxxxx");
-						else Console.WriteLine();
-
-                        if (e > 3) Console.WriteLine("    x           x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 3) Console.WriteLine("    x           x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 4) Console.WriteLine("   xxx          x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 4) Console.WriteLine("  xxxxx         x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 4) Console.WriteLine("   xxx          x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 5) Console.WriteLine("    x           x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 7) Console.WriteLine("  x x x         x");
-						else if (e > 6) Console.WriteLine("  x x           x");
-						else if (e > 5) Console.WriteLine("    x           x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 7) Console.WriteLine(" x  x  x        x");
-						else if (e > 6) Console.WriteLine(" x  x           x");
-						else if (e > 5) Console.WriteLine("    x           x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 5) Console.WriteLine("    x           x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 9) Console.WriteLine("   x x          x");
-						else if (e > 8) Console.WriteLine("   x            x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 9) Console.WriteLine(" x     x        x");
-						else if (e > 8) Console.WriteLine(" x              x");
-						else if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 1) Console.WriteLine("                x");
-						else Console.WriteLine();
-
-                        if (e > 0) Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-						else Console.WriteLine();
-                        Console.WriteLine();
-
-                    }
-                    Console.Write("The word: ");
-                    
-                    for (int i = 0; i < word.Length; ++i)
-                    {
-                        if (v[i])
-                        {
-                            Console.Write(" " + word[i] + " ");
-                        }
-                        else {
-                            Console.Write(" _ ");
-                        }
-                    }
-                    Console.WriteLine();
                 }
-
-                // printing final result
-                if (done)
+                else
                 {
-                    Console.WriteLine("You won!");
-                }
-                else {
-                    Console.WriteLine("You lost.");
-                    Console.WriteLine("The word was: " + word);
+                    Console.WriteLine("Sorry, no words like that.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Sorry, no words like that.");
+                Console.Write(ex.Message);
+                Console.ReadKey();
             }
-
         }
     }
 }
