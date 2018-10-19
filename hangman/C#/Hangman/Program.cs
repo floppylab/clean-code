@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Hangman.Helpers;
 
 namespace Hangman
 {
@@ -9,7 +10,8 @@ namespace Hangman
     {
         static void Main(string[] args)
         {
-            Dictionary<int, List<string>> d = new Dictionary<int, List<string>>();
+            SortFunctions sF = new SortFunctions();
+
             List<string> w = new List<string>();
 
             var wordsPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName + @"\resources\words.in";
@@ -25,14 +27,7 @@ namespace Hangman
             }
 
             // sorting words by length
-            for (int i = 0; i < w.Count; i++)
-            {
-                if (!d.ContainsKey(w[i].Length))
-                {
-                    d.Add(w[i].Length, new List<string>());
-                }
-                d[w[i].Length].Add(w[i]);
-            }
+            Dictionary<int, List<string>> d = sF.SortWordsByLength(w);
 
 
             Console.WriteLine("Number of letters in the word? ");
