@@ -23,6 +23,7 @@ Feel free to add a new language to the list. Please try to keep the original mis
 - Groovy
 - C#
 - C++
+- Go
 
 ## Resources
 
