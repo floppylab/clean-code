@@ -19,9 +19,10 @@ Feel free to add a new language to the list. Please try to keep the original mis
 
 ### Currently implemented langs
 
-- java
-- groovy
+- Java
+- Groovy
 - C#
+- C++
 
 ## Resources
 
