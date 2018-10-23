@@ -26,7 +26,7 @@ public class Hangman {
 				d.get(w.get(i).length()).add(w.get(i))
 			}
 
-			System.out.print("Number of letters in the word? ")
+			print("Number of letters in the word? ")
 			int l = scanner.nextInt()
 
 			if(d.containsKey(l))  
@@ -49,7 +49,7 @@ public class Hangman {
 						break;
 					}
 					
-					System.out.print("Guess a letter: ")
+					print("Guess a letter: ")
 					char chr = scanner.next().charAt(0)
 					
 					// TODO check if previously entered
@@ -61,83 +61,84 @@ public class Hangman {
 						}
 					}
 					if (hit) {
-						System.out.print("Hit!\n");
+						print("Hit!\n");
 					} else {
 
-						System.out.printf(
+						printf(
 								"Missed, mistake #%d out of %d\n",
 								e + 1, 10
 								)
 						++e;
 
 						// drawing hangman
-						System.out.print("\n")
-						if(e>2) System.out.println("    xxxxxxxxxxxxx")
-						else System.out.print("\n")
+						print("\n")
+						if(e>2) println("    xxxxxxxxxxxxx")
+						else print("\n")
 
-						if(e>3) System.out.println("    x           x");
-						else if (e > 1) System.out.println("                x");
-						else System.out.print("\n");
+						if(e>3) println("    x           x");
+						else if (e > 1) println("                x");
+						else print("\n");
 
-						if(e>3) System.out.println("    x           x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>3) println("    x           x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>4) System.out.println("   xxx          x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>4) println("   xxx          x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>4) System.out.println("  xxxxx         x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>4) println("  xxxxx         x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>4) System.out.println("   xxx          x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>4) println("   xxx          x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>5) System.out.println("    x           x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>5) println("    x           x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>7) System.out.println("  x x x         x")
-						else if(e>6) System.out.println("  x x           x")
-						else if(e>5) System.out.println("    x           x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>7) println("  x x x         x")
+						else if(e>6) println("  x x           x")
+						else if(e>5) println("    x           x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>7) System.out.println(" x  x  x        x")
-						else if(e>6) System.out.println(" x  x           x")
-						else if(e>5) System.out.println("    x           x")
-						else if (e > 1) System.out.println("                x");
-						else System.out.print("\n")
+						if(e>7) println(" x  x  x        x")
+						else if(e>6) println(" x  x           x")
+						else if(e>5) println("    x           x")
+						else if (e > 1) println("                x");
+						else print("\n")
 
-						if(e>5) System.out.println("    x           x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>5) println("    x           x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>9) System.out.println("   x x          x")
-						else if(e>8) System.out.println("   x            x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>9) println("   x x          x")
+						else if(e>8) println("   x            x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>9) System.out.println(" x     x        x")
-						else if(e>8) System.out.println(" x              x")
-						else if (e > 1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>9) println(" x     x        x")
+						else if(e>8) println(" x              x")
+						else if (e > 1) println("                x")
+						else print("\n")
 
-						if(e>1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>1) println("                x")
+						else print("\n")
 
-						if(e>1) System.out.println("                x")
-						else System.out.print("\n")
+						if(e>1) println("                x")
+						else print("\n")
 
-						if(e>0) System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-						else System.out.println("\n")
-						System.out.print("\n")
+						if(e>0) println("xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+						else println("\n")
+						print("\n")
 
 					}
 					System.out.print("The word: ")
 					for (int i = 0; i < word.length(); ++i) {
+					print("The word: ")
 						if (v[i]) {
 							System.out.print(" " + word.charAt(i)+ " ")
 						} else {
@@ -149,15 +150,15 @@ public class Hangman {
 				
 				// printing final result
 				if (done) {
-					System.out.print("You won!\n")
+					print("You won!\n")
 				} else {
-					System.out.print("You lost.\n")
-					System.out.println("The word was: " + word)
+					print("You lost.\n")
+					println("The word was: " + word)
 				}
 			}
 			else 
 			{
-				System.out.print("Sorry, no words like that.\n")
+				print("Sorry, no words like that.\n")
 			}
 
 		} catch (IOException e) {
