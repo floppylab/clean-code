@@ -4,7 +4,7 @@ A very simple command line game. The original code is not too long but it is bug
 
 ## Steps to complete
 
-Each step should fit in 45-60 minutes. 
+Each step should fit in 45-60 minutes.
 
 - Get to know the code, run it a few times, write some end-to-end tests
 - Try to make modules, extract methods, classes from the code
@@ -23,6 +23,7 @@ Feel free to add a new language to the list. Please try to keep the original mis
 - Groovy
 - C#
 - C++
+- JavaScript
 
 ## Resources
 
