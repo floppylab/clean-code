@@ -17,12 +17,13 @@ Each step should fit in 45-60 minutes.
 
 Feel free to add a new language to the list. Please try to keep the original mistakes, structure, so that everyone can work on the "exact same" bugs, making similar improvements.
 
-### Currently implemented langs
+### Currently implemented languages
 
 - Java
 - Groovy
 - C#
 - C++
+- Go
 - JavaScript
 
 ## Resources
