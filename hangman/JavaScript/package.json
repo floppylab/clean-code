@@ -1,0 +1,15 @@
+{
+  "name": "JavaScript",
+  "version": "1.0.0",
+  "description": "This is JavaScript Hangman refactoring code.",
+  "main": "hangman.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Yeonwoo Park",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
+}
