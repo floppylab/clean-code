@@ -3,7 +3,7 @@ extern crate rand;
 use rand::Rng;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Result};
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::io;
 
 fn main() -> Result<()> {
@@ -30,15 +30,26 @@ fn main() -> Result<()> {
     };
 
 		let word = rand::thread_rng().choose(&words).unwrap();
-		let mut solved = vec!['_'; letter_count as usize];
-		let mut guessed: HashSet<char> = HashSet::new();
-		let mut misses: u32 = 0;
-		let mut count: u32 = 0;
+		let mut v = vec![false; letter_count as usize];
+		let mut e: u32 = 0;
+		let mut done = true;
 
-		while misses < 10 {
+		while e < 10 {
+			done = true;
+			for (i, _ch) in word.chars().enumerate() {
+				if !v[i] {
+					done = false;
+				}
+			}
+
+			if done {
+				break;
+			}
+
 			let mut hit = false;
 			let mut guess = String::new();
-			println!("Guess a letter");
+
+			println!("Guess a letter: ");
 			io::stdin().read_line(&mut guess)
 							.expect("Failed to read line");
 			let guess: char = match guess.trim().parse() {
@@ -46,150 +57,142 @@ fn main() -> Result<()> {
 				Err(_) => continue
 			};
 
-			if guessed.contains(&guess) {
-				println!("You have already guessed: {}\n", guess);
-				continue;
-			} else {
-				guessed.insert(guess);
-			}
+			// TODO: check if previously entered.
 
 			for (i, ch) in word.chars().enumerate() {
 				if guess == ch {
 					hit = true;
-					count += 1;
-					solved[i] = ch;
+					v[i] = true;
 				}
 			}
 
-			if count == letter_count {
-				println!("You win! The word was: {}", word);
-				break;
-			}
-
-			if !hit {
-				misses += 1;
+			if hit {
+				println!("Hit!");
+			} else {
+				println!("Missed, mistake {} out of {}", e + 1, 10);
+				e += 1;
 
 				// drawing hangman
 				print!("\n");
-				if misses > 2 {
+				if e > 2 {
 					println!("    xxxxxxxxxxxxx");
 				} else { 
 					print!("\n");
 				}
 
-				if misses > 3 {
+				if e > 3 {
 					println!("    x           x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 3 {
+				if e > 3 {
 					println!("    x           x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 4 {
+				if e > 4 {
 					println!("   xxx          x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 4 {
+				if e > 4 {
 					println!("  xxxxx         x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if  misses > 4 {
+				if  e > 4 {
 					println!("   xxx          x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 5 {
+				if e > 5 {
 					println!("    x           x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 7 {
+				if e > 7 {
 					println!("  x x x         x");
-				} else if misses > 6 {
+				} else if e > 6 {
 					println!("  x x           x");
-				} else if misses > 5 {
+				} else if e > 5 {
 					println!("    x           x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 7 {
+				if e > 7 {
 					println!(" x  x  x        x");
-				} else if misses > 6 {
+				} else if e > 6 {
 					println!(" x  x           x");
-				} else if misses > 5 {
+				} else if e > 5 {
 					println!("    x           x");
-				}  else if misses > 1 {
+				}  else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 5 {
+				if e > 5 {
 					println!("    x           x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 9 {
+				if e > 9 {
 					println!("   x x          x");
-				} else if misses > 8 {
+				} else if e > 8 {
 					println!("   x            x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 9 {
+				if e > 9 {
 					println!(" x     x        x");
-				} else if misses > 8 {
+				} else if e > 8 {
 					println!(" x              x");
-				} else if misses > 1 {
+				} else if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 1 {
+				if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 1 {
+				if e > 1 {
 					println!("                x");
 				} else {
 					print!("\n");
 				}
 
-				if misses > 0 {
+				if e > 0 {
 					println!("xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 				} else {
 					println!("\n");
@@ -198,12 +201,23 @@ fn main() -> Result<()> {
 				print!("\n");
 			}
 
-			let current: String = solved.iter().collect();
-			println!("The word: {}", current);
+			print!("The word: ");
+
+			for (i, ch) in word.chars().enumerate() {
+				if v[i] {
+					print!(" {} ", ch);
+				} else {
+					print!(" _ ");
+				}
+			}
+			print!("\n");
 		}
 
-		if misses >= 10 {
-			println!("You lose. The word was: {}", word);
+		if done {
+			println!("You win!");
+		} else {
+			println!("You lost.");
+			println!("The word was: {}", word);
 		}
 
     Ok(())
