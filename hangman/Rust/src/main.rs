@@ -62,7 +62,7 @@ fn main() -> Result<()> {
 			}
 
 			if count == letter_count {
-				println!("You win!");
+				println!("You win! The word was: {}", word);
 				break;
 			}
 
@@ -199,10 +199,12 @@ fn main() -> Result<()> {
 			}
 
 			let current: String = solved.iter().collect();
-			println!("{}", current);
+			println!("The word: {}", current);
 		}
 
-		println!("{}", word);
+		if misses >= 10 {
+			println!("You lose. The word was: {}", word);
+		}
 
     Ok(())
 }
