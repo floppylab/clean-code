@@ -26,6 +26,7 @@ Feel free to add a new language to the list. Please try to keep the original mis
 - Go
 - JavaScript
 - C
+- Rust
 
 ## Resources
 
