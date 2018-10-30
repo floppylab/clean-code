@@ -1,0 +1,7 @@
+[package]
+name = "hangman"
+version = "0.1.0"
+authors = ["Patrick Tone <pt@patrickt.one>"]
+
+[dependencies]
+rand="0.5.5"
