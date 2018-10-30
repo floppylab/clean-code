@@ -15,10 +15,6 @@ Each step should fit in 45-60 minutes.
 
 ## Languages
 
-Feel free to add a new language to the list. Please try to keep the original mistakes, structure, so that everyone can work on the "exact same" bugs, making similar improvements.
-
-### Currently implemented languages
-
 - Java
 - Groovy
 - C#
@@ -29,6 +25,12 @@ Feel free to add a new language to the list. Please try to keep the original mis
 - Kotlin
 - C
 - Rust
+
+## Contributions
+
+Feel free to add a new language to the list. Please try to keep the original mistakes, structure, so that everyone can work on the "exact same" bugs, making similar improvements.
+
+Don't forget to modify this README file and please add another README to the new folder. It should contain information on the tools needed and the steps how to run the code.
 
 ## Resources
 
