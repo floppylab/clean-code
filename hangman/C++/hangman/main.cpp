@@ -176,7 +176,7 @@ int main(int argc, char** argv)
             // printing final result
             if (done)
             {
-                std::cout << "You won!" << std::endl;
+                std::cout << "You won !!!! " << std::endl;
             }
             else
             {
@@ -189,7 +189,7 @@ int main(int argc, char** argv)
             std::cout << "Sorry, no words like that." << std::endl;
         }
     }
-    catch(const std::exception &e)
+    catch(const std::exception &e )
     {
         // TODO nice exception catching.
         std::cout << e.what() << std::endl;
