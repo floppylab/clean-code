@@ -4,6 +4,8 @@
   "description": "This is JavaScript Hangman refactoring code.",
   "main": "hangman.js",
   "scripts": {
+    "start": "node hangman.js",
+    "setup": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
