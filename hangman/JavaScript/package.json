@@ -4,7 +4,7 @@
   "description": "This is JavaScript Hangman refactoring code.",
   "main": "hangman.js",
   "scripts": {
-    "start": "node hangman.js",
+    "start": "check-node-version --node \">= $(cat .nvmrc)\" && node hangman.js",
     "setup": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,5 +13,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "readline-sync": "^1.4.9"
+   },
+  "devDependencies": {
+    "check-node-version": "3.2.0" 
   }
 }
