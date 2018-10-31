@@ -1,4 +1,5 @@
-# It contains a collection of pieces of code to practice refactoring. Code is in a number of prgramming languages
+# Hangman
+It contains a collection of pieces of code to practice refactoring. Code is in a number of prgramming languages
 such as C, C++, C#, Gp, Groovy, Java, JavaScript, Kotlin, Python.
 
 
