@@ -15,16 +15,16 @@ Each step should fit in 45-60 minutes.
 
 ## Languages
 
-- Java
-- Groovy
-- C#
-- C++
-- Go
-- JavaScript
-- Python
-- Kotlin
-- C
-- Rust
+- [C#](C#)
+- [C++](C++)
+- [C](C)
+- [Go](Go)
+- [Groovy](Groovy)
+- [Java](Java)
+- [JavaScript](JavaScript)
+- [Kotlin](Kotlin)
+- [Python](Python)
+- [Rust](Rust)
 
 ## Contributions
 
