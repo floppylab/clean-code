@@ -1,3 +1,7 @@
-# A collection of pieces of code to practice refactoring
+# Hangman
 
-You can find pieces of simple programs here you can work on. These will help you to improve your refactoring skills.
+Command line interface, Hangman game in Python.
+
+###Setup
+1. Git or download this program.
+2. Run this program in Python3. Using ``python3 Hangman.py``
