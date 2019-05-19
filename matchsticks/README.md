@@ -2,6 +2,8 @@
 
 A very simple command line game. The original code is not too long but it is buggy, unreadable and it is not easy to add a new feature. Simply said, it is a piece of legacy code you can improve your refactoring skills with.
 
+You can find the rules in the original article (check resources!)
+
 ## Steps to complete
 
 Each step should fit in 45-60 minutes.
