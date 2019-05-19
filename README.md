@@ -5,3 +5,4 @@ You can find pieces of simple programs here you can work on. These will help you
 ## Collection
 
 - [Hangman](hangman)
+- [Matchsticks](matchsticks)
