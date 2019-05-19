@@ -1,4 +1,4 @@
-package floppylab.matchstick
+package floppylab.matchsticks
 
 var c : Boolean = true
 var s: Int = 21
