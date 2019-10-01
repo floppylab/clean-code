@@ -30,7 +30,7 @@ int  main() {
             int r = (s - 1) % 4;
             int t = (r == 0) ? 1 : r;
 
-            cout << "computer takes $t" << endl;
+            cout << "computer takes " + to_string(t) << endl;
             takeOrEnd(t);
             c = !c;
 
