@@ -1,62 +1,65 @@
 package floppylab.matchsticks;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Matchsticks {
     
-    static int s = 21;
-    static boolean c = true;
-    
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+         int s,t,i,c,k;s = 21; //local integer variables
+         boolean ct = true; // local boolean variable. initial value true
+         String str,ing = ""; //string
+        
 	    Scanner sc = new Scanner(System.in);
 	    System.out.println("there are 21 matchsticks on the table");
 	    System.out.println("computer's first");
 	
 	    while (s != 0) {
-	        if (c) {
+	        if (ct) {
 	        	System.out.println("computer's thinking");
-	            int r = (s - 1) % 4;
-	            int t = (r == 0)? 1 : r;
+	            k = (s - 1) % 4;
+	            if (k == 0) t = 1; else t = k;
+	           // t = (r == 0)? 1 : r;
 	
 	            System.out.println("computer takes " + t);
-	            takeOrEnd(t);
-	            c = !c;
+	            
+	    	    //take or end
+	            if (s - t <= 0) {
+	    	    	System.out.println("game over");
+	    	    	if (ct == true) str = "you"; else str = "computer";
+	    	    	System.out.println("the winner is " + str);
+	    	        s = 0;
+	    	    } else {
+	    	        s -= t;
+	    	    }
+	            
+	            ct = !ct;
 	
 	        } else {
 	        	System.out.println("it is your turn");
-	            int t;
 	
 	            do {
-	                    System.out.println("you can take 1, 2 or 3!");
-	                    System.out.println("so how many sticks will you take?");
+	                System.out.println("you can take 1, 2 or 3!");
+	                System.out.println("so how many sticks will you take?");
 	                t = sc.nextInt();
 	            } while (!(t == 1 || t == 2 || t == 3));
 	
-	            takeOrEnd(t);
-	            c = !c;
+	            //take or end
+	    	    if (s - t <= 0) {
+	    	    	System.out.println("game over");
+	    	    	System.out.println("the winner is " + ((ct) ? "you" : "computer"));
+	    	        s = 0;
+	    	    } else { s -= t; }
+	    
+	            ct = !ct; //negate variable
 	        }
-	
-	        printSticks();
+            // print sticks
+			System.out.println("there are "+s+" matchstick(s) on the table");
+			i = 0;
+			while (i++<s) { System.out.print("|"); }
+			System.out.println("");
 	    }
 	    sc.close();
-	}
-	
-	static void takeOrEnd(int t) {
-	    if (s - t <= 0) {
-	    	System.out.println("game over");
-	    	System.out.println("the winner is " + ((c) ? "you" : "computer"));
-	        s = 0;
-	    } else {
-	        s -= t;
-	    }
-	}
-	
-	static void printSticks() {
-		System.out.println("there are "+s+" matchstick(s) on the table");
-		int i = 0;
-		while (i++<s) { System.out.print("|"); }
-		System.out.println("");
 	}
 
 }
