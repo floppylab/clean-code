@@ -34,14 +34,33 @@ namespace Hangman
                 d[w[i].Length].Add(w[i]);
             }
 
+          
 
-            Console.WriteLine("Number of letters in the word? ");
-            int l = Convert.ToInt32(Console.ReadLine());
-            
-            if (d.ContainsKey(l))
+            int userInputNumOfLetters;
+            while (true)
+            {
+                Console.WriteLine("Number of letters in the word? ");
+                userInputNumOfLetters = Convert.ToInt32(Console.ReadLine());
+                if (userInputNumOfLetters < 6)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter a word length 6 or more");
+                }
+                else if (userInputNumOfLetters > 14)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter a word length 14 or less");
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if (d.ContainsKey(userInputNumOfLetters))
             {
                 // choose a random word with the given length
-                string word = d[l][new Random().Next(d[l].Count)];
+                string word = d[userInputNumOfLetters][new Random().Next(d[userInputNumOfLetters].Count)];
                 bool[] v = new bool[word.Length];
                 int e = 0;
                 bool done = true;
