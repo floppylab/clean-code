@@ -18,6 +18,7 @@ Each step should fit in 45-60 minutes.
 
 - [Kotlin](Kotlin)
 - [JavaScript](JavaScript)
+- [C++](C++)
 
 ## Contributions
 
