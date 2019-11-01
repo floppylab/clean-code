@@ -1,28 +1,11 @@
 #include <stdio.h>
 
-char c = 1;
-int s = 21;
-
-void takeOrEnd(int t) {
-    if (s - t <= 0) {
-        printf("game over\n");
-        printf("the winner is %s\n",(c ? "you" : "computer"));
-        s = 0;
-    } else {
-        s -= t;
-    }
-}
-
-void printSticks() {
-   int i = 0;
-   printf("there are %d matchstick(s) on the table\n", s);
-   while (i++<s) { printf("|"); }
-   printf("\n");
-}
-
 int main(int argc, char ** argv) {
 
-    int r,t;
+    char s,c,t,i=0;
+
+    c = 1;
+    s = 21;
 
     printf("there are 21 matchsticks on the table\n");
     printf("computer's first\n");
@@ -30,11 +13,29 @@ int main(int argc, char ** argv) {
     while (s != 0) {
         if (c) {
             printf("computer's thinking\n");
-            r = (s - 1) % 4;
-            t = (r == 0) ? 1 : r;
+            t = !((s - 1) % 4) ? 1 : (s - 1) % 4;
 
             printf("computer takes %d\n", t);
-            takeOrEnd(t);
+            // take or end
+            if (c) { // if computer
+                if (s - t <= 0) { //computer takes last
+                    printf("game over\nthe winner is you\n");
+                    s = 0;
+                } else { //computer takes
+                    s = s - t;
+                }
+            }
+            else {
+                if (s - t <= 0) { //you take last
+                    s = 0;
+                    printf("game over\n");
+                    printf("the winner is computer\n");
+                } else { // you take
+                    s -= t;
+                }
+            }
+
+            //your turn
             c = !c;
 
         } else {
@@ -47,11 +48,34 @@ int main(int argc, char ** argv) {
                 scanf("%d", &t);
             } while (!(t == 1 || t == 2 || t == 3));
 
-            takeOrEnd(t);
+            // take or end
+            if (c) { // if computer
+                if (s - t <= 0) { //computer takes last
+                    printf("game over\nthe winner is you\n");
+                    s = 0;
+                } else { //computer takes
+                    s = s - t;
+                }
+            }
+            else {
+                if (s - t <= 0) { //you take last
+                    s = 0;
+                    printf("game over\n");
+                    printf("the winner is computer\n");
+                } else { // you take
+                    s -= t;
+                }
+            }
+
+            //computer turn
             c = !c;
         }
 
-        printSticks();
+        //print sticks
+        i = i & 0x0000;
+        printf("there are %d matchstick(s) on the table\n", s);
+        while (i++<s) { printf("|"); }
+        printf("\n");
     }
     return 0;
 }
